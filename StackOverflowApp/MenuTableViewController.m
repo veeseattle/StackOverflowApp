@@ -29,9 +29,12 @@
     
   }
   
-  
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [self.delegate menuOptionSelected:indexPath.row];
+  
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

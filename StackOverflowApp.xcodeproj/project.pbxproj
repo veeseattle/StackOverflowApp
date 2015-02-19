@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E317CC51A968FD000B6443B /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E317CC41A968FD000B6443B /* ProfileViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4EC34EA71A929DF2005C1190 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC34EA61A929DF2005C1190 /* main.m */; };
 		4EC34EAA1A929DF2005C1190 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC34EA91A929DF2005C1190 /* AppDelegate.m */; };
 		4EC34EAD1A929DF2005C1190 /* StackOverflowApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4EC34EAB1A929DF2005C1190 /* StackOverflowApp.xcdatamodeld */; };
@@ -35,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E317CC31A968FD000B6443B /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		4E317CC41A968FD000B6443B /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		4E317CC61A9697B100B6443B /* MenuPressedDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuPressedDelegate.h; sourceTree = "<group>"; };
 		4EC34EA11A929DF2005C1190 /* StackOverflowApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StackOverflowApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EC34EA51A929DF2005C1190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EC34EA61A929DF2005C1190 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -177,6 +181,9 @@
 				4EF295EA1A93F12F00763C7A /* Question.m */,
 				4EF295EC1A93F21800763C7A /* StackOverflowService.h */,
 				4EF295ED1A93F21800763C7A /* StackOverflowService.m */,
+				4E317CC31A968FD000B6443B /* ProfileViewController.h */,
+				4E317CC41A968FD000B6443B /* ProfileViewController.m */,
+				4E317CC61A9697B100B6443B /* MenuPressedDelegate.h */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -291,6 +298,7 @@
 				4EC34ED81A93DF63005C1190 /* MenuTableViewController.m in Sources */,
 				4EF295EB1A93F12F00763C7A /* Question.m in Sources */,
 				4EC34EAD1A929DF2005C1190 /* StackOverflowApp.xcdatamodeld in Sources */,
+				4E317CC51A968FD000B6443B /* ProfileViewController.m in Sources */,
 				4EF295E81A93ED0300763C7A /* QuestionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
