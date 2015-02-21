@@ -7,11 +7,13 @@
 //
 
 #import "ProfileViewController.h"
+#import "StackOverflowService.h"
+#import "User.h"
 
 @interface ProfileViewController () <UIScrollViewDelegate>
 @property (retain,nonatomic) UIScrollView *scrollView;
-
-
+@property (retain,nonatomic) User *user;
+@property (retain,nonatomic) UILabel *name;
 
 @end
 
@@ -20,21 +22,44 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-  self.scrollView = [[UIScrollView alloc]
+  
+ self.scrollView = [[UIScrollView alloc]
                      initWithFrame:self.view.frame];
   self.scrollView.backgroundColor = [UIColor blueColor];
   self.scrollView.contentSize = CGSizeMake(2000, 2000);
   [self.view addSubview:self.scrollView];
   self.scrollView.pagingEnabled = true;
   
-  UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(100, 1000, 100, 50)];
-  textField.backgroundColor = [UIColor blueColor];
-  [self.scrollView addSubview:textField];
-  [textField release];
-  self.scrollView.delegate = self;
+  UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(100, 1000, 200, 200)];
+  text.backgroundColor = [UIColor blueColor];
+  text.text = @"I like fried chicken";
   
+  [[StackOverflowService sharedService]fetchUserProfile:^(User *results, NSString *error) {
+    self.user = results;
+    self.name.text = self.user.name;
+    //self.name.text = self.user.name;
+    //NSLog(@"self.name.text");
+  }];
+  
+  self.name = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 100, 100)];
+  self.name.backgroundColor = [UIColor blueColor];
+  //name.text = self.user.name;
+  [self.scrollView addSubview:self.name];
+  NSLog(self.name.text);
 
+  
+  [self.scrollView addSubview:text];
+  [text release];
+  [self.name release];
+  self.scrollView.delegate = self;
+ 
+
+  
+  
 }
+
+
+
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
   NSLog(@"x:%f y:%f",scrollView.contentOffset.x,scrollView.contentOffset.y);

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E07260A1A96B28D0087D013 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0726091A96B28D0087D013 /* User.m */; };
 		4E317CC51A968FD000B6443B /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E317CC41A968FD000B6443B /* ProfileViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4EC34EA71A929DF2005C1190 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC34EA61A929DF2005C1190 /* main.m */; };
 		4EC34EAA1A929DF2005C1190 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC34EA91A929DF2005C1190 /* AppDelegate.m */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E0726081A96B28D0087D013 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		4E0726091A96B28D0087D013 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		4E317CC31A968FD000B6443B /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		4E317CC41A968FD000B6443B /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		4E317CC61A9697B100B6443B /* MenuPressedDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuPressedDelegate.h; sourceTree = "<group>"; };
@@ -146,6 +149,10 @@
 		4EC34EDC1A93DF96005C1190 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4E0726081A96B28D0087D013 /* User.h */,
+				4E0726091A96B28D0087D013 /* User.m */,
+				4EF295E91A93F12F00763C7A /* Question.h */,
+				4EF295EA1A93F12F00763C7A /* Question.m */,
 				4EC34EAB1A929DF2005C1190 /* StackOverflowApp.xcdatamodeld */,
 			);
 			name = Model;
@@ -177,8 +184,6 @@
 				4EF295E41A93EAB700763C7A /* SearchQuestionsViewController.m */,
 				4EF295E61A93ED0300763C7A /* QuestionCell.h */,
 				4EF295E71A93ED0300763C7A /* QuestionCell.m */,
-				4EF295E91A93F12F00763C7A /* Question.h */,
-				4EF295EA1A93F12F00763C7A /* Question.m */,
 				4EF295EC1A93F21800763C7A /* StackOverflowService.h */,
 				4EF295ED1A93F21800763C7A /* StackOverflowService.m */,
 				4E317CC31A968FD000B6443B /* ProfileViewController.h */,
@@ -288,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E07260A1A96B28D0087D013 /* User.m in Sources */,
 				4EC34EAA1A929DF2005C1190 /* AppDelegate.m in Sources */,
 				4EC34ED51A92A07A005C1190 /* BurgerContainerViewController.m in Sources */,
 				4EF295E51A93EAB700763C7A /* SearchQuestionsViewController.m in Sources */,

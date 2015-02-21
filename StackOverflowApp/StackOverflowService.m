@@ -8,6 +8,7 @@
 
 #import "StackOverflowService.h"
 #import "Question.h"
+#import "User.h"
 
 @implementation StackOverflowService
 
@@ -20,6 +21,55 @@
     mySharedService = [[StackOverflowService alloc] init];
   });
   return mySharedService;
+}
+
+
+-(void)fetchUserProfile:(void (^)(User *results, NSString *error))completionHandler  {
+  NSString *urlString = @"https://api.stackexchange.com/2.2/me?order=desc&sort=reputation&site=stackoverflow";
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSString *token = [defaults objectForKey:@"token"];
+  if (token) {
+    urlString = [urlString stringByAppendingString:@"&access_token="];
+    urlString = [urlString stringByAppendingString:token];
+    urlString = [urlString stringByAppendingString:@"&key=agYAhcHH57tCIUnf2e*BkA(("];
+  }
+  
+  NSURL *url = [NSURL URLWithString:urlString];
+  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+  request.HTTPMethod = @"GET";
+  
+  NSURLSession *session = [NSURLSession sharedSession];
+  
+  NSURLSessionTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    if (error) {
+      completionHandler(nil,@"Could not connect");
+    } else {
+      NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+      NSInteger statusCode = httpResponse.statusCode;
+      
+      switch (statusCode) {
+        case 200 ... 299: {
+          NSLog(@"%ld",(long)statusCode);
+          User *result = [User userInfoFromJSON:data];
+          
+          dispatch_async(dispatch_get_main_queue(), ^{
+            if (result) {
+              completionHandler(result,nil);
+            } else {
+              completionHandler(nil,@"Search could not be completed");
+            }
+          });
+          break;
+        }
+        default:
+          NSLog(@"%ld",(long)statusCode);
+          break;
+      }
+      
+    }
+  }];
+  [dataTask resume];
+
 }
 
 -(void)fetchQuestionsWithSearchTerm:(NSString *)searchTerm completionHandler:(void (^)(NSArray *results, NSString *error))completionHandler {
