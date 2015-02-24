@@ -49,6 +49,8 @@ NSInteger const slideRightBuffer = 300;
   self.slideAway = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(slidePanel:)];
   [self.topViewController.view addGestureRecognizer:self.slideAway];
   
+  
+  
 }
 
 - (void)burgerButtonPressed {
@@ -78,6 +80,36 @@ NSInteger const slideRightBuffer = 300;
 }
 
 - (void)slidePanel:(id)sender {
+  UIPanGestureRecognizer *pan = (UIPanGestureRecognizer *)sender;
+  CGPoint translatedPoint = [pan translationInView:self.view];
+  CGPoint velocity = [pan velocityInView:self.view];
+  
+  if ([pan state] == UIGestureRecognizerStateChanged) {
+    if (velocity.x > 0 || self.topViewController.view.frame.origin.x > 0) {
+      self.topViewController.view.center = CGPointMake(self.topViewController.view.center.x + translatedPoint.x, self.topViewController.view.center.y);
+      [pan setTranslation:CGPointZero inView:self.view];
+    }
+  }
+  
+  if ([pan state] == UIGestureRecognizerStateEnded) {
+    __weak BurgerContainerViewController *weakSelf = self;
+    
+    if (self.topViewController.view.frame.origin.x > self.view.frame.size.width / 3) {
+      self.burgerButton.userInteractionEnabled = false;
+      [UIView animateWithDuration:0.6 animations:^{
+        self.topViewController.view.center = CGPointMake(weakSelf.view.frame.size.width * 1.1, weakSelf.topViewController.view.center.y);
+
+      } completion:^(BOOL finished) {
+        [weakSelf.topViewController.view addGestureRecognizer:weakSelf.tapItClose];
+      }];
+    }
+    else {
+      [UIView animateWithDuration:0.2 animations:^{
+        weakSelf.topViewController.view.center = weakSelf.view.center;
+      }];
+      [self.topViewController.view removeGestureRecognizer:self.tapItClose];
+    }
+  }
   
 }
 
